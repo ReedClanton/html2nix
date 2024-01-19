@@ -50,7 +50,8 @@ classifiers = [
 dependencies = [
 	"Netscape-Bookmarks-File-Parser@git+https://github.com/FlyingWolFox/Netscape-Bookmarks-File-Parser"
 ]
-dynamic = ["version"]
+version = "0.0.1"
+#dynamic = ["version"]
 
 [project.urls]
 Documentation = "https://github.com/ReedClanton/html2nix/wiki"
