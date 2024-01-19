@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools >= 61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project}
+name = "html2nix"
+authors = [
+	{name = "Reed Clanton", email = "clantonreed@gmail.com"};
+]
+description = "Converts bookmarks.html files as exported by Firefox into Nix syntax that's accepted by Home Manager's `programs.firefox.profiles.<name>.bookmarks`."
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["bookmarks" "html" "firefox" "convert" "to" "2" "nix" "syntax" "home" "manager"]
+license = {text = "LICENSE"}
+classifiers = [
+	"DevelopmentStatus :: Pre-Alpha",
+	"Environment :: Console",
+	"Environment :: Other Environment",
+	"Framework :: Sphinx",
+	"Intended Audience :: Developers",
+	"Intended Audience :: End Users/Desktop",
+	"Intended Audience :: Information Technology",
+	"Intended Audience :: System Administrators",
+	"License :: OSI Approved :: MIT License",
+	"Natural Language :: English",
+	"Operating System :: POSIX",
+	"Operating System :: POSIX :: Linux",
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Lauguage :: Python :: 3.11",
+	"Topic :: Database",
+	"Topic :: Desktop Environment",
+	"Topic :: File Formats",
+	"Topic :: Home Automation",
+	"Topic :: Internet",
+	"Topic :: Internet :: Browsers",
+	"Topic :: Scientific/Engineering",
+	"Topic :: Scientific/Engineering :: Information Analysis",
+	"Topic :: Software Development",
+	"Topic :: Software Development :: Code Generators",
+	"Topic :: Software Development :: Interpreters",
+	"Topic :: System",
+	"Topic :: System :: Archiving",
+	"Topic :: System :: Installation/Setup",
+	"Topic :: System :: Operating System",
+	"Topic :: System :: Recovery Tools",
+	"Topic :: System :: Systems Administration",
+	"Topic :: Text Processing",
+	"Topic :: Utilities"
+]
+dependencies = [
+	"Netscape-Bookmarks-File-Parser@git+https://github.com/FlyingWolFox/Netscape-Bookmarks-File-Parser"
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://github.com/ReedClanton/html2nix/wiki"
+Repository = "https://github.com/ReedClanton/html2nix"
+Issues = "https://github.com/ReedClanton/html2nix/issues"
+
