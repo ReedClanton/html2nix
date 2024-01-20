@@ -1,19 +1,19 @@
 [build-system]
-requires = ["setuptools >= 61.0", "wheel"]
+requires = ["setuptools >= 65", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[project}
+[project]
 name = "html2nix"
 authors = [
-	{name = "Reed Clanton", email = "clantonreed@gmail.com"};
+	{name = "Reed Clanton", email = "clantonreed@gmail.com"},
 ]
 description = "Converts bookmarks.html files as exported by Firefox into Nix syntax that's accepted by Home Manager's `programs.firefox.profiles.<name>.bookmarks`."
 readme = "README.md"
 requires-python = ">=3.11"
-keywords = ["bookmarks" "html" "firefox" "convert" "to" "2" "nix" "syntax" "home" "manager"]
+keywords = ["bookmarks", "html", "firefox", "convert", "to", "2", "nix", "syntax", "home", "manager"]
 license = {text = "LICENSE"}
 classifiers = [
-	"DevelopmentStatus :: Pre-Alpha",
+	"DevelopmentStatus :: 2 - Pre-Alpha",
 	"Environment :: Console",
 	"Environment :: Other Environment",
 	"Framework :: Sphinx",
@@ -48,7 +48,7 @@ classifiers = [
 	"Topic :: Utilities"
 ]
 dependencies = [
-	"Netscape-Bookmarks-File-Parser@git+https://github.com/FlyingWolFox/Netscape-Bookmarks-File-Parser"
+	"NetscapeBookmarksFileParser@git+https://github.com/FlyingWolFox/Netscape-Bookmarks-File-Parser"
 ]
 version = "0.0.1"
 #dynamic = ["version"]

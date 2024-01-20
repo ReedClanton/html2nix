@@ -10,11 +10,15 @@ buildPythonPackage rec {
 
 	propagatedBuildInputs = [
 		setuptools
-		fetchFromGitHub {
-			owner = "FlyingWolFox";
-			repo = "Netscape-Bookmarks-File-Parser";
-			rev = "v1.1";
-			hash = "112816d44bf4c0da8e8f442aed370020e16594e8888c8ddb10a699779dc666eb";
-		}
+		(buildPythonPackage rec {
+			pname = "NetscapeBookmarksFileParser";
+			version = "1.1";
+			src = fetchFromGitHub {
+				owner = "FlyingWolFox";
+				repo = "Netscape-Bookmarks-File-Parser";
+				rev = "v1.1";
+				hash = "sha256-zCdwfOkYvGPEdWYxo4Tas1JDK60zjyxWzfuflP4y38U=";
+			};
+		})
 	];
 }
