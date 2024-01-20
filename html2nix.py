@@ -16,7 +16,6 @@ def html2nix(input_path: str = "./input/bookmarks.html", indent: int = 0) -> str
 	'''
 	with open(input_path, "r") as file:
 		bookmarks = NetscapeBookmarksFile(file).parse()
-	print([method_name for method_name in dir(bookmarks)])
 	return bookmark_to_nix(convert_bookmarks(bookmarks.bookmarks.items), indent)
 
 def bookmark_to_nix(bookmarks: list(), indent: int = 0) -> str:
