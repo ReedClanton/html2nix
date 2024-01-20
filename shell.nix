@@ -21,4 +21,8 @@ buildPythonPackage rec {
 			};
 		})
 	];
+
+	shellHook = ''
+		python3 -c "import html2nix"
+	'';
 }
