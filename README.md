@@ -7,7 +7,7 @@ Convers bookmarks.html Firefox export into Nix syntax as accepted by Home Manage
 - Clone this repo to your local Nix machine.
 - Place your `bookmarks.html` file as exported by Firefox in the `<repoRoot>/inputs/` directory.
 - From the root of the repo, run `shell-nix`.
-- You should see a Nix syntax representation of the `bookmarks.html` file.
+- A `bookmarks.nix` file should be written to the root of the repo's directory. This file contains a Nix representation of your `bookmarks.html` file.
 
 # Output Usage
 
