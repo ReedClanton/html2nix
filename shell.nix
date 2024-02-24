@@ -12,12 +12,12 @@ buildPythonPackage rec {
 		setuptools
 		(buildPythonPackage rec {
 			pname = "NetscapeBookmarksFileParser";
-			version = "1.1";
+			version = "1.2";
 			src = fetchFromGitHub {
-				owner = "FlyingWolFox";
+				owner = "ReedClanton";
 				repo = "Netscape-Bookmarks-File-Parser";
-				rev = "v1.1";
-				hash = "sha256-zCdwfOkYvGPEdWYxo4Tas1JDK60zjyxWzfuflP4y38U=";
+				rev = "v1.2";
+				hash = "sha256-b4AFTHNMv0aMy25URe22cIAZvAL3pkP0oas//SMWCHY=";
 			};
 		})
 	];
