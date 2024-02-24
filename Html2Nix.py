@@ -7,7 +7,8 @@ class Html2Nix:
 		'''
 		Converts `NETSCAPE bookmark file HTML https://discourse.nixos.org/t/error-reading-symbolic-link-nix-var-nix-profiles-per-user-root-channels-no-such-file-or-directory/34838https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa753582(v=vs.85)`_
 		to Nix syntax accepted by Home Manager's
-		`programs.firefox.profiles.<name>.bookmarks https://discourse.nixos.org/t/error-reading-symbolic-link-nix-var-nix-profiles-per-user-root-channels-no-such-file-or-directory/34838https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.bookmarks`_.			   
+		`programs.firefox.profiles.<name>.bookmarks https://discourse.nixos.org/t/error-reading-symbolic-link-nix-var-nix-profiles-per-user-root-channels-no-such-file-or-directory/34838https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles._name_.bookmarks`_.
+
 		:param input_path: Path to HTML file exported from brower including file name.
 		:type input_path: str
 		:param indent_size: Number of space(s) each indent should represent.
@@ -15,6 +16,7 @@ class Html2Nix:
 		'''
 		self.input_path = input_path
 		self.indent_size = indent_size
+		self.indent_string = " " * self.indent_size
 
 		with open(self.input_path, "r") as file:
 			bookmarks = NetscapeBookmarksFile(file).parse()
@@ -135,19 +137,19 @@ class Html2Nix:
 		:return: Provided shortcut as Nix syntax formatted string.
 		:rtype: str
 		'''
-		tab = "\t" * indent
+		tab = self.indent_string * indent
 
 		# Name.
-		msg = f"{tab}\tname = \"{shortcut['name']}\";\n"
+		msg = f"{tab}{self.indent_string}name = \"{shortcut['name']}\";\n"
 		# URL.
-		msg += f"{tab}\turl = \"{shortcut['url']}\";\n"
+		msg += f"{tab}{self.indent_string}url = \"{shortcut['url']}\";\n"
 		# Format tags when provided.
 		if "tags" in shortcut.keys():
 			tags_msg = "[ "
 			for t in shortcut["tags"]:
 				tags_msg += f'"{t}" '
 			tags_msg += "]"
-			msg += f"{tab}\ttags = {tags_msg};\n"
+			msg += f"{tab}{self.indent_string}tags = {tags_msg};\n"
 
 		return f"{tab}" + "{\n" + msg + f"{tab}" + "}\n"
 
@@ -162,18 +164,18 @@ class Html2Nix:
 		:return: Provided folder as Nix syntax formatted string.
 		:rtype: str
 		'''
-		tab = "\t" * indent
+		tab = self.indent_string * indent
 
 		# Name.
-		msg = f"{tab}\tname = \"{folder['name']}\";\n"
+		msg = f"{tab}{self.indent_string}name = \"{folder['name']}\";\n"
 		# Toolbar status.
 		if "toolbar" in folder.keys():
-			msg += f"{tab}\ttoolbar = {str(folder['toolbar']).lower()};\n"
+			msg += f"{tab}{self.indent_string}toolbar = {str(folder['toolbar']).lower()};\n"
 		# Folder contents.
-		msg += f"{tab}\tbookmarks = [\n"
+		msg += f"{tab}{self.indent_string}bookmarks = [\n"
 		msg += self.to_nix(folder["bookmarks"], indent+2)
 
-		return f"{tab}" + "{\n" + msg + f"{tab}\t];\n" + f"{tab}" + "}\n"
+		return f"{tab}" + "{\n" + msg + f"{tab}{self.indent_string}];\n" + f"{tab}" + "}\n"
 
 	def to_nix(self, bookmarks: list(), indent: int = 0) -> str:
 		'''
@@ -200,5 +202,4 @@ class Html2Nix:
 
 html2nix = Html2Nix("./input/bookmarks.html")
 print(html2nix.nix)
-
 
