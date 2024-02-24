@@ -23,6 +23,6 @@ buildPythonPackage rec {
 	];
 
 	shellHook = ''
-		python3 -c "import html2nix" > bookmarks.nix
+		python3 -c "import Html2Nix" > bookmarks.nix
 	'';
 }
