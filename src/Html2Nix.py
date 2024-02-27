@@ -6,7 +6,6 @@ from sys import argv, stdout
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.WARN)
-#log.setLevel(logging.INFO)
 s_handler = logging.StreamHandler(stdout)
 log.addHandler(s_handler)
 
@@ -301,6 +300,12 @@ def main():
 				else:
 					log.error(f"Output option must include a file path.")
 					return 1
+			case "-b" | "--bracket":
+				log.debug(f"Processing '{argv[i]}' as bracket on option...")
+				parameters["include_brackets"] = True;
+			case "-n" | "--no-bracket":
+				log.debug(f"Processing '{argv[i]}' as bracket off option...")
+				parameters["include_brackets"] = False;
 			case _:
 				log.error(f"'{argv[i]}' not a recognized option.")
 				return 1
