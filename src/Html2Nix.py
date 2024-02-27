@@ -6,7 +6,7 @@ from sys import argv, stdout
 
 log = logging.getLogger(__name__)
 # TODO: Reset to INFO.
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.WARN)
 #log.setLevel(logging.INFO)
 s_handler = logging.StreamHandler(stdout)
 log.addHandler(s_handler)
@@ -278,23 +278,33 @@ class Html2Nix:
 
 
 def main():
+	# Tracks option(s) passed in from terminal.
 	parameters = dict()
 	# Process command line argument(s).
-	i = 1
-	argv_len = len(argv)
+	argv_len, i = len(argv), 1
 	while i < argv_len:
-		if argv[i] in ["-i", "--input"]:
-			if i + 1 < argv_len:
-				i += 1
-				parameters["input_file_path"] = argv[i]
-			else:
-				raise ValueError("Input option provided with no path.")
-		elif argv[i] in ["-o", "--output"]:
-			if i + 1 < argv_len:
-				i += 1
-				parameters["output_file_path"] = argv[i]
-			else:
-				raise ValueError("Output option provided with no path.")
+		match argv[i]:
+			case "-i" | "--input":
+				log.debug(f"Processing '{argv[i]}' as input option...")
+				if i + 1 < argv_len:
+					i += 1
+					parameters["input_file_path"] = argv[i]
+					log.debug(f"'{parameters['input_file_path']}' set as path to input file.")
+				else:
+					log.error(f"Input option must include a file path.")
+					return 1
+			case "-o" | "--output":
+				log.debug(f"Processing '{argv[i]}' as output option...")
+				if i + 1 < argv_len:
+					i += 1
+					parameters["output_file_path"] = argv[i]
+					log.debug(f"'{parameters['output_file_path']}' set as path to output file.")
+				else:
+					log.error(f"Output option must include a file path.")
+					return 1
+			case _:
+				log.error(f"'{argv[i]}' not a recognized option.")
+				return 1
 		i += 1
 
 	Html2Nix(**parameters)
