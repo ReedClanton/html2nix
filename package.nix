@@ -1,6 +1,6 @@
 { fetchFromGitHub, lib, python3Packages }: python3Packages.buildPythonApplication rec {
   pname = "html2nix";
-  version = "0.0.1";
+  version = "0.0.2";
   # Set python build type.
   pyproject = true;
 
