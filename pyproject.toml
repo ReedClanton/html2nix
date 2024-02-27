@@ -50,7 +50,7 @@ classifiers = [
 dependencies = [
 	"NetscapeBookmarksFileParser@git+https://github.com/ReedClanton/Netscape-Bookmarks-File-Parser"
 ]
-version = "0.0.1"
+version = "0.0.2"
 #dynamic = ["version"]
 
 [project.urls]

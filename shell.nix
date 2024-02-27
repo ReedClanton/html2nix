@@ -3,7 +3,7 @@ with pkgs.python3Packages;
 
 buildPythonPackage rec {
 	pname = "html2nix";
-	version = "0.0.1";
+	version = "0.0.2";
 	src = ./src/.;
 
 	format = "pyproject";
@@ -16,7 +16,7 @@ buildPythonPackage rec {
 			src = fetchFromGitHub {
 				owner = "ReedClanton";
 				repo = "Netscape-Bookmarks-File-Parser";
-				rev = "v1.2";
+				rev = "v${version}";
 				hash = "sha256-b4AFTHNMv0aMy25URe22cIAZvAL3pkP0oas//SMWCHY=";
 			};
 		})
