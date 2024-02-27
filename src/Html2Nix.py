@@ -5,7 +5,6 @@ import os
 from sys import argv, stdout
 
 log = logging.getLogger(__name__)
-# TODO: Reset to INFO.
 log.setLevel(logging.WARN)
 #log.setLevel(logging.INFO)
 s_handler = logging.StreamHandler(stdout)
