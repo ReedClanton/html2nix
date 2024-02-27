@@ -48,7 +48,7 @@ classifiers = [
 	"Topic :: Utilities"
 ]
 dependencies = [
-	"NetscapeBookmarksFileParser@git+https://github.com/FlyingWolFox/Netscape-Bookmarks-File-Parser"
+	"NetscapeBookmarksFileParser@git+https://github.com/ReedClanton/Netscape-Bookmarks-File-Parser"
 ]
 version = "0.0.1"
 #dynamic = ["version"]
