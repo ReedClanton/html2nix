@@ -4,7 +4,7 @@ with pkgs.python3Packages;
 buildPythonPackage rec {
 	pname = "html2nix";
 	version = "0.0.1";
-	src = ./.;
+	src = ./src/.;
 
 	format = "pyproject";
 
@@ -21,8 +21,4 @@ buildPythonPackage rec {
 			};
 		})
 	];
-
-	shellHook = ''
-		python3 -c "import Html2Nix" > bookmarks.nix
-	'';
 }
