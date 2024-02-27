@@ -1,8 +1,8 @@
-{ buildPythonPackage, fetchFromGitHub, lib, python3, setuptools, setuptools-scm }: buildPythonPackage rec {
+{ fetchFromGitHub, lib, python3Packages }: python3Packages.buildPythonApplication rec {
   pname = "html2nix";
   version = "0.0.1";
+  # Set python build type.
   pyproject = true;
-#  format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "ReedClanton";
@@ -11,12 +11,14 @@
     hash = "sha256-J0qEBS2I/h1zwf790AvZG0Bqe44YIgc1tgiFm8U41nk=";
   };
 
-  build-system = [
-    setuptools-scm
+  # Build time dependencies.
+  nativeBuildInputs = with python3Packages; [
+    setuptools
   ];
 
-  dependencies = [
-    setuptools
+  # Run time dependencies.
+  buildInputs = with python3Packages; [
+    # Using my fork.
     (buildPythonPackage rec {
       pname = "NetscapeBookmarksFileParser";
       version = "1.2";
@@ -28,6 +30,9 @@
       };
     })
   ];
+
+  # Un-comment once tests are written.
+  doCheck = false;
 
   meta = with lib; {
     changelog = "https://github.com/ReedClanton/html2nix/blob/${version}/CHANGELOG.md";
@@ -43,7 +48,8 @@
     maintainers = with maintainers; [
       ReedClanton
     ];
-    platforms = platforms.linux ++ lib.platforms.unix;
+    # When `platforms` isn't provided it's set to the same value as the interpreter.
+    #platforms = platforms.unix;
   };
 }
 
