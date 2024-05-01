@@ -5,7 +5,7 @@ Converts `bookmarks.html` file as exported by a browser, only Firefox has been t
 # Running On Nix
 
 - Clone this repo to your local Nix machine.
-- From the root of the repo, run `shell-nix`.
+- From the root of the repo, run `nix-shell`.
 - Run `python3 src/Html2Nix.py`:
     - Use `-i`/`--input` to define a input file.
     - Use `-o`/`--output` to define an output file.
