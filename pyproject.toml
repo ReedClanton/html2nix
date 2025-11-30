@@ -58,3 +58,6 @@ Documentation = "https://github.com/ReedClanton/html2nix/wiki"
 Repository = "https://github.com/ReedClanton/html2nix"
 Issues = "https://github.com/ReedClanton/html2nix/issues"
 
+[project.scripts]
+html2nix = "Html2Nix:main"
+
