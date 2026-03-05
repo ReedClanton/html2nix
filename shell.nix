@@ -4,15 +4,17 @@ with pkgs.python3Packages;
 buildPythonPackage rec {
 	pname = "html2nix";
 	version = "0.0.2";
+  # Set build method.
+  format = "pyproject";
 	src = ./src/.;
-
-	format = "pyproject";
 
 	propagatedBuildInputs = [
 		setuptools
 		(buildPythonPackage rec {
 			pname = "NetscapeBookmarksFileParser";
 			version = "1.2";
+      # Set build method.
+      format = "setuptools";
 			src = fetchFromGitHub {
 				owner = "ReedClanton";
 				repo = "Netscape-Bookmarks-File-Parser";
